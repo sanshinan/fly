@@ -13,4 +13,14 @@ public class MainModelImpl implements MainContract.IMainModel {
     public <T> void getLoginData(String url, INetCallBack<T> callBack) {
         RetrofitUtils.getInstance().get(url,callBack);
     }
+
+    @Override
+    public <T> void getLoginBan(String url, INetCallBack<T> callBack) {
+        RetrofitUtils.getInstance().get(url,callBack);
+    }
+
+    @Override
+    public <T> void getLoginCh(String url, INetCallBack<T> callBack) {
+        RetrofitUtils.getInstance().get(url,callBack);
+    }
 }

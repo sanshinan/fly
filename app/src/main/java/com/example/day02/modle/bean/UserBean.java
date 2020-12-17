@@ -1,4 +1,4 @@
-package com.example.day02.modle;
+package com.example.day02.modle.bean;
 
 import java.io.Serializable;
 import java.util.List;

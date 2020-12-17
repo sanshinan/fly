@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <EditText
         android:id="@+id/edit_zh"
@@ -25,5 +25,8 @@
         tools:layout_editor_absoluteX="151dp"
         tools:layout_editor_absoluteY="296dp"
         tools:ignore="MissingConstraints" />
-
+    <TextView
+        android:id="@+id/textx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
