@@ -1,8 +1,9 @@
-package com.example.day02.util.net;
+package com.example.mvp.net;
 
 import android.util.Log;
 
-import com.example.day02.api.ApiService;
+
+import com.example.mvp.api.ApiService;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -11,7 +12,6 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;

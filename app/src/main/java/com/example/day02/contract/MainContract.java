@@ -1,11 +1,14 @@
 package com.example.day02.contract;
 
-import com.example.day02.base.BaseModle;
-import com.example.day02.base.BaseView;
+
+
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
 import com.example.day02.modle.bean.UserBean;
-import com.example.day02.util.net.INetCallBack;
+
+import com.example.mvp.base.BaseModle;
+import com.example.mvp.base.BaseView;
+import com.example.mvp.net.INetCallBack;
 
 public class MainContract {
     public interface IMainModel extends BaseModle {

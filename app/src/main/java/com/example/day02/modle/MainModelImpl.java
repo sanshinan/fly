@@ -2,8 +2,9 @@ package com.example.day02.modle;
 
 
 import com.example.day02.contract.MainContract;
-import com.example.day02.util.net.INetCallBack;
-import com.example.day02.util.net.RetrofitUtils;
+import com.example.mvp.net.INetCallBack;
+import com.example.mvp.net.RetrofitUtils;
+
 
 public class MainModelImpl implements MainContract.IMainModel {
 

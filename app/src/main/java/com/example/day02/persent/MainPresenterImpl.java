@@ -1,13 +1,15 @@
 package com.example.day02.persent;
 
 
-import com.example.day02.base.BasePresenter;
+
 import com.example.day02.contract.MainContract;
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
 import com.example.day02.modle.MainModelImpl;
 import com.example.day02.modle.bean.UserBean;
-import com.example.day02.util.net.INetCallBack;
+import com.example.mvp.base.BasePresenter;
+import com.example.mvp.net.INetCallBack;
+
 
 public class MainPresenterImpl extends BasePresenter<MainContract.IMainView,MainContract.IMainModel> implements MainContract.IMainPresenter{
 

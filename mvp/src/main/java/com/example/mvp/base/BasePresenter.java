@@ -1,4 +1,4 @@
-package com.example.day02.base;
+package com.example.mvp.base;
 
 public abstract class BasePresenter<V extends BaseView,M extends BaseModle> {
     public V iView;

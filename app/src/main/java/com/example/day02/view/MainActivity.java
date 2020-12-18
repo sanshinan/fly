@@ -7,13 +7,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.day02.R;
-import com.example.day02.base.BaseActivity;
+
 import com.example.day02.contract.MainContract;
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
 import com.example.day02.modle.bean.UserBean;
 import com.example.day02.persent.MainPresenterImpl;
-import com.example.day02.util.net.URLConstant;
+import com.example.mvp.base.BaseActivity;
+import com.example.mvp.net.URLConstant;
 
 import java.util.ArrayList;
 import java.util.List;
