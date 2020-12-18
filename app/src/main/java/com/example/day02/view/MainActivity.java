@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity<MainPresenterImpl> implements Mai
 
     @Override
     public MainPresenterImpl getPresenter() {
-        return new MainPresenterImpl(this);
+        return new MainPresenterImpl();
     }
 
     @Override

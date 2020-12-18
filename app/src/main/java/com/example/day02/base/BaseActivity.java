@@ -31,4 +31,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected abstract int getLayoutID();
 
     public abstract T getPresenter();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (presenter !=null){
+            presenter.detachView();
+        }
+    }
 }

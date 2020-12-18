@@ -1,5 +1,6 @@
 package com.example.day02.contract;
 
+import com.example.day02.base.BaseModle;
 import com.example.day02.base.BaseView;
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
@@ -7,7 +8,7 @@ import com.example.day02.modle.bean.UserBean;
 import com.example.day02.util.net.INetCallBack;
 
 public class MainContract {
-    public interface IMainModel {
+    public interface IMainModel extends BaseModle {
         //Bnanner 业务
         <T> void getLoginData(String url, INetCallBack<T> callBack);
         //新闻业务

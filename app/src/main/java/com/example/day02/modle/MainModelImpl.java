@@ -7,7 +7,10 @@ import com.example.day02.util.net.RetrofitUtils;
 
 public class MainModelImpl implements MainContract.IMainModel {
 
-
+    private MainContract.IMainPresenter presenter;
+    public MainModelImpl(MainContract.IMainPresenter presenter){
+        this.presenter=presenter;
+    }
 
     @Override
     public <T> void getLoginData(String url, INetCallBack<T> callBack) {

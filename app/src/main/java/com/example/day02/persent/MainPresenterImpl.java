@@ -9,19 +9,13 @@ import com.example.day02.modle.MainModelImpl;
 import com.example.day02.modle.bean.UserBean;
 import com.example.day02.util.net.INetCallBack;
 
-public class MainPresenterImpl extends BasePresenter<MainContract.IMainView> implements MainContract.IMainPresenter{
-
-    private MainContract.IMainModel mainModel;
+public class MainPresenterImpl extends BasePresenter<MainContract.IMainView,MainContract.IMainModel> implements MainContract.IMainPresenter{
 
 
-    public MainPresenterImpl(MainContract.IMainView mainView) {
-        this.mainModel = new MainModelImpl();
-
-    }
     //Banner业务
     @Override
     public void loginban(String url) {
-        mainModel.getLoginBan(url, new INetCallBack<Banbean>() {
+        iModle.getLoginBan(url, new INetCallBack<Banbean>() {
 
             @Override
             public void onSuccess(Banbean banbean) {
@@ -37,8 +31,7 @@ public class MainPresenterImpl extends BasePresenter<MainContract.IMainView> imp
     //新闻业务
     @Override
     public void login(String url) {
-        mainModel.getLoginData(url, new INetCallBack<UserBean>() {
-            @Override
+        iModle.getLoginData(url, new INetCallBack<UserBean>() {@Override
             public void onSuccess(UserBean userBean) {
                 iView.getData(userBean);
             }
@@ -52,7 +45,7 @@ public class MainPresenterImpl extends BasePresenter<MainContract.IMainView> imp
     //成绩业务
     @Override
     public void loginCh(String url) {
-        mainModel.getLoginCh(url, new INetCallBack<Chbean>() {
+        iModle.getLoginCh(url, new INetCallBack<Chbean>() {
 
             @Override
             public void onSuccess(Chbean chbean) {
@@ -70,5 +63,10 @@ public class MainPresenterImpl extends BasePresenter<MainContract.IMainView> imp
     public void loginResult(String result) {
 //做判单的
 
+    }
+
+    @Override
+    public MainContract.IMainModel getiModle() {
+        return new MainModelImpl(this);
     }
 }
