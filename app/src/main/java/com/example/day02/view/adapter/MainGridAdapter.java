@@ -46,7 +46,23 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         GridViewHolder viewHolder = ( GridViewHolder) holder;
-        Glide.with(context).load("http://cdwan.cn/www/static/channel/ic_canchu.png").into(((GridViewHolder) holder).textView);
+
+        if(position==0){
+            viewHolder.textView.setImageResource(R.drawable.a);
+            viewHolder.text.setText("居家");
+        }else if(position==1){
+            viewHolder.textView.setImageResource(R.drawable.ab);
+            viewHolder.text.setText("餐厅");
+        }else if(position==2){
+            viewHolder.textView.setImageResource(R.drawable.ad);
+            viewHolder.text.setText("配件");
+        }else if(position==3){
+            viewHolder.textView.setImageResource(R.drawable.ac);
+            viewHolder.text.setText("服装");
+        }else if(position==4) {
+            viewHolder.textView.setImageResource(R.drawable.ae);
+            viewHolder.text.setText("志趣");
+        }
     }
 
     @Override
@@ -55,11 +71,12 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
     }
 
     class GridViewHolder extends RecyclerView.ViewHolder{
-
+        private TextView text;
         private ImageView textView;
         public GridViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.grid_my_image);
+            text=itemView.findViewById(R.id.titlea);
         }
     }
 

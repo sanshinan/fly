@@ -81,8 +81,8 @@ public class OneFragment extends Fragment {
          设置Grid布局
          */
         recydh = inflate.findViewById(R.id.recy_dh);
-        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(3);
-        // 在构造函数设置每行的网格个数
+        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(5);
+      /*  // 在构造函数设置每行的网格个数
         // 公共属性
         gridLayoutHelper.setItemCount(5);// 设置布局里Item个数
         gridLayoutHelper.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
@@ -94,7 +94,7 @@ public class OneFragment extends Fragment {
         gridLayoutHelper.setVGap(20);// 控制子元素之间的垂直间距
         gridLayoutHelper.setHGap(20);// 控制子元素之间的水平间距
         gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
-        gridLayoutHelper.setSpanCount(5);// 设置每行多少个网格
+        gridLayoutHelper.setSpanCount(5);// 设置每行多少个网格*/
         MainGridAdapter mainGridAdapter = new MainGridAdapter(gridLayoutHelper,getContext());
         DelegateAdapter adapter = new DelegateAdapter(virtualLayoutManager,true);
 
