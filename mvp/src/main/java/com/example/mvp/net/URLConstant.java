@@ -10,5 +10,8 @@ public class URLConstant {
 
     public static String NEWCH=BASEURL+"exam2003/astudent.json";
 
-    public static String JIAJU_SHOUYE="";
+    public static String JIAJU_SHOUYE="https://cdwan.cn/";
+
+
+    public static String JIAJU_Z=JIAJU_SHOUYE+"api/index";
 }

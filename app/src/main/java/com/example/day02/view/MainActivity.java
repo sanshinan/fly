@@ -34,6 +34,7 @@ import com.example.day02.adapter.NewAdapter;
 import com.example.day02.contract.MainContract;
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
+import com.example.day02.modle.bean.Homebean;
 import com.example.day02.modle.bean.UserBean;
 import com.example.day02.persent.MainPresenterImpl;
 import com.example.day02.util.PoiOverlay;
@@ -210,6 +211,11 @@ public class MainActivity extends BaseActivity<MainPresenterImpl> implements Mai
     @Override
     public void getCh(Chbean chbean) {
         Log.i("TTT", "getCh: "+chbean.toString());
+    }
+
+    @Override
+    public void gethome(Homebean homebean) {
+
     }
 
 

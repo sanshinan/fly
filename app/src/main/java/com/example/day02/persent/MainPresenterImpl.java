@@ -6,6 +6,7 @@ import com.example.day02.contract.MainContract;
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
 import com.example.day02.modle.MainModelImpl;
+import com.example.day02.modle.bean.Homebean;
 import com.example.day02.modle.bean.UserBean;
 import com.example.mvp.base.BasePresenter;
 import com.example.mvp.net.INetCallBack;
@@ -59,7 +60,22 @@ public class MainPresenterImpl extends BasePresenter<MainContract.IMainView,Main
             }
         });
     }
+    //p层购物首页业务
+    @Override
+    public void homepage(String url) {
+        iModle.getHome(url, new INetCallBack<Homebean>() {
 
+            @Override
+            public void onSuccess(Homebean homebean) {
+                iView.gethome(homebean);
+            }
+
+            @Override
+            public void onFail(String err) {
+
+            }
+        });
+    }
 
 
     @Override

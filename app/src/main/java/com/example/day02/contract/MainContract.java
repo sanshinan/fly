@@ -4,6 +4,7 @@ package com.example.day02.contract;
 
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
+import com.example.day02.modle.bean.Homebean;
 import com.example.day02.modle.bean.UserBean;
 
 import com.example.mvp.base.BaseModle;
@@ -18,6 +19,8 @@ public class MainContract {
         <T> void getLoginBan(String url, INetCallBack<T> callBack);
         //成绩业务
         <T> void getLoginCh(String url, INetCallBack<T> callBack);
+        //购物首页业务
+        <T> void getHome(String url, INetCallBack<T> callBack);
 
     }
     public  interface IMainPresenter {
@@ -27,7 +30,8 @@ public class MainContract {
         void login(String url);
         //成绩业务
         void loginCh(String url);
-
+        //购物首页业务
+        void homepage(String url);
     }
     public interface IMainView extends BaseView {
 
@@ -36,5 +40,7 @@ public class MainContract {
         void getData(UserBean string);
         //成绩业务
         void getCh(Chbean chbean);
+        //购物首页业务
+        void gethome(Homebean homebean);
     }
 }

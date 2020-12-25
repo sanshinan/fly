@@ -46,7 +46,7 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         GridViewHolder viewHolder = ( GridViewHolder) holder;
-        Glide.with(context).load("http://ww4.sinaimg.cn/large/610dc034jw1f2uyg3nvq7j20gy0p6myx.jpg").into(((GridViewHolder) holder).textView);
+        Glide.with(context).load("http://cdwan.cn/www/static/channel/ic_canchu.png").into(((GridViewHolder) holder).textView);
     }
 
     @Override

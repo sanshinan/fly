@@ -12,6 +12,7 @@ import retrofit2.http.Url;
 
 public interface ApiService {
 
+
     @GET
     Observable<ResponseBody> get(@Url String url);
 
@@ -22,5 +23,6 @@ public interface ApiService {
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> post(@Url String url, @FieldMap HashMap<String,String> map);
+
 
 }
