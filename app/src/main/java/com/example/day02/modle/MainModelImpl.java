@@ -1,6 +1,8 @@
 package com.example.day02.modle;
 
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.day02.contract.MainContract;
 import com.example.mvp.net.INetCallBack;
 import com.example.mvp.net.RetrofitUtils;
@@ -25,6 +27,6 @@ public class MainModelImpl implements MainContract.IMainModel {
 
     @Override
     public <T> void getLoginCh(String url, INetCallBack<T> callBack) {
-        RetrofitUtils.getInstance().get(url,callBack);
+        RetrofitUtils.getInstance().get(url, callBack);
     }
 }

@@ -7,26 +7,51 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <EditText
-        android:id="@+id/edit_zh"
-        android:hint="输入账号"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <EditText
-        android:id="@+id/edit_mm"
-        android:hint="输入密码"
+        <LinearLayout
+            android:id="@+id/linear"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edit_query"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn"
+                android:text="搜索"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btna"
+                android:text="开始步行"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_scrollFlags="scroll"
+            android:id="@+id/recy"
+
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+    <Button
+        android:id="@+id/btn_wb"
+        android:text="分享微博"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="296dp"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/textx"
+        android:id="@+id/btn_qq"
+        android:text="QQ分享"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_ym"
+        android:text="友盟分享"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 </LinearLayout>

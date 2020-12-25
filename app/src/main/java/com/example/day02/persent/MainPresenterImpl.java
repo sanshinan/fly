@@ -56,16 +56,11 @@ public class MainPresenterImpl extends BasePresenter<MainContract.IMainView,Main
 
             @Override
             public void onFail(String err) {
-
             }
         });
     }
 
-    @Override
-    public void loginResult(String result) {
-//做判单的
 
-    }
 
     @Override
     public MainContract.IMainModel getiModle() {

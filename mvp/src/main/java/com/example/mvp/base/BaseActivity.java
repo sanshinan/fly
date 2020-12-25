@@ -18,7 +18,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             presenter.attachView(this);
         }
 
-        initView();
+
+        initView(savedInstanceState);
         initData();
 
 
@@ -26,7 +27,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected abstract void initData();
 
-    protected abstract void initView();
+    protected abstract void initView(Bundle savedInstanceState);
 
     protected abstract int getLayoutID();
 
