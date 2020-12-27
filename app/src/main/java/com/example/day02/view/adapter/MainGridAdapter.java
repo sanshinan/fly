@@ -24,13 +24,13 @@ import java.util.List;
 public class MainGridAdapter extends DelegateAdapter.Adapter {
 
 
-    ArrayList<Homebean.DataBean> beans;
+    private ArrayList<Homebean.DataBean.ChannelBean> channelBeans;
     private LayoutHelper gridLayoutHelper;
 
     private Context context;
 
-    public MainGridAdapter(ArrayList<Homebean.DataBean> beans, LayoutHelper gridLayoutHelper, Context context) {
-        this.beans = beans;
+    public MainGridAdapter(ArrayList<Homebean.DataBean.ChannelBean> channelBeans, LayoutHelper gridLayoutHelper, Context context) {
+        this.channelBeans = channelBeans;
         this.gridLayoutHelper = gridLayoutHelper;
         this.context = context;
     }
@@ -49,18 +49,18 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        List<Homebean.DataBean.ChannelBean> channel = beans.get(position).getChannel();
+
         GridViewHolder viewHolder = ( GridViewHolder) holder;
 
-        Glide.with(context).load(channel.get(position).getIcon_url()).into(viewHolder.textView);
-        viewHolder.text.setText(channel.get(position).getName());
+        Glide.with(context).load(channelBeans.get(position).getIcon_url()).into(viewHolder.textView);
+        viewHolder.text.setText(channelBeans.get(position).getName());
 
     }
 
     @Override
     public int getItemCount() {
-        if (beans.size()>0){
-            return beans.size();
+        if (channelBeans.size()>0){
+            return channelBeans.size();
         }else {
             return 0;
         }

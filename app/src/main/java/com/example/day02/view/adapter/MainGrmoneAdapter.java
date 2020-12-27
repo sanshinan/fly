@@ -17,18 +17,16 @@ import com.example.day02.R;
 import com.example.day02.modle.bean.Homebean;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainGrAdapter extends DelegateAdapter.Adapter {
-
+public class MainGrmoneAdapter extends DelegateAdapter.Adapter {
     Context context;
+    private ArrayList<Homebean.DataBean.NewGoodsListBean> newGoodsListBeans;
     LayoutHelper layoutHelper;
-    private ArrayList<Homebean.DataBean.BrandListBean> brandListBeans;
 
-    public MainGrAdapter(Context context, LayoutHelper layoutHelper, ArrayList<Homebean.DataBean.BrandListBean> brandListBeans) {
+    public MainGrmoneAdapter(Context context, ArrayList<Homebean.DataBean.NewGoodsListBean> newGoodsListBeans, LayoutHelper layoutHelper) {
         this.context = context;
+        this.newGoodsListBeans = newGoodsListBeans;
         this.layoutHelper = layoutHelper;
-        this.brandListBeans = brandListBeans;
     }
 
     @Override
@@ -39,37 +37,35 @@ public class MainGrAdapter extends DelegateAdapter.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(context).inflate(R.layout.item_four, parent, false);
-        return new VHe(inflate);
+        View inflate = LayoutInflater.from(context).inflate(R.layout.item_five, parent, false);
+        return new VHY(inflate);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            VHe h= (VHe) holder;
-
-        h.txa.setText(brandListBeans.get(position).getName());
-        h.txb.setText(brandListBeans.get(position).getFloor_price()+"元起");
-        Glide.with(context).load(brandListBeans.get(position).getNew_pic_url()).into(h.img);
+        VHY vhy= (VHY) holder;
+        vhy.texta.setText(newGoodsListBeans.get(position).getName());
+        vhy.textb.setText("钱"+newGoodsListBeans.get(position).getRetail_price());
+        Glide.with(context).load(newGoodsListBeans.get(position).getList_pic_url()).into(vhy.img);
     }
 
     @Override
     public int getItemCount() {
-        if (brandListBeans.size()>0){
-            return brandListBeans.size();
+        if (newGoodsListBeans.size()>0){
+            return newGoodsListBeans.size();
         }else {
             return 0;
         }
     }
-
-    class VHe extends RecyclerView.ViewHolder{
+    class VHY extends RecyclerView.ViewHolder{
         ImageView img;
-        TextView txa;
-        TextView txb;
-        public VHe(@NonNull View itemView) {
+        TextView texta;
+        TextView textb;
+        public VHY(@NonNull View itemView) {
             super(itemView);
-            img=itemView.findViewById(R.id.grild_img_back);
-            txa=itemView.findViewById(R.id.grild_one_name);
-            txb=itemView.findViewById(R.id.grild_one_price);
+            img=itemView.findViewById(R.id.products_img);
+            texta=itemView.findViewById(R.id.products_name);
+            textb=itemView.findViewById(R.id.products_price);
         }
     }
 }

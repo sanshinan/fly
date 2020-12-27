@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/popularity_img"
+        android:layout_width="90dp"
+        android:layout_height="90dp"/>
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/popularity_name"
+            android:text="双工"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="一级"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:layout_below="@id/popularity_name"
+            android:id="@+id/popularity_jies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/popularity_price"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:layout_below="@+id/popularity_jies"
+            android:text="￥"
+            android:textColor="#FF0026"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
