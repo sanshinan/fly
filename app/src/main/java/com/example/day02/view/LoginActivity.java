@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         gridLayoutHelper.setHGap(20);// 控制子元素之间的水平间距
         gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
         gridLayoutHelper.setSpanCount(5);// 设置每行多少个网格
-        MainGridAdapter mainGridAdapter = new MainGridAdapter(gridLayoutHelper,this);
+        MainGridAdapter mainGridAdapter = new MainGridAdapter(null,gridLayoutHelper,this);
 
 
 
@@ -92,5 +92,6 @@ public class LoginActivity extends AppCompatActivity {
         recyclerview.setLayoutManager(virtualLayoutManager);
 
         recyclerview.setAdapter(adapter);
+
     }
 }

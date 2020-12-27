@@ -22,6 +22,7 @@ import com.example.mvp.base.BasePresenter;
 import com.example.mvp.net.URLConstant;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class PushActivity extends BaseActivity<MainPresenterImpl> implements Mai
     private int lastIndex;
     @Override
     protected void initData() {
-//        presenter.homepage(URLConstant.JIAJU_Z);
+        presenter.homepage(URLConstant.JIAJU_Z);
     }
 
     @Override
@@ -105,9 +106,12 @@ public class PushActivity extends BaseActivity<MainPresenterImpl> implements Mai
 
     @Override
     public void gethome(Homebean homebean) {
-        beans.notify();
-        beans.add(homebean.getData());
-        Log.i("TAG", "gethome: "+beans.toString());
+        if (homebean!=null){
+            beans.add(homebean.getData());
+            Log.i("TAG", "gethome: "+beans.toString());
+                   oneFragment.getBean(beans);
+        }
+
     }
     private void setFragmentPosition(int position) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

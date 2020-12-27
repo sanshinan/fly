@@ -15,17 +15,22 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.day02.R;
+import com.example.day02.modle.bean.Homebean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainGridAdapter extends DelegateAdapter.Adapter {
 
 
-
-    private GridLayoutHelper gridLayoutHelper;
+    ArrayList<Homebean.DataBean> beans;
+    private LayoutHelper gridLayoutHelper;
 
     private Context context;
 
-    public MainGridAdapter(GridLayoutHelper gridLayoutHelper, Context context) {
+    public MainGridAdapter(ArrayList<Homebean.DataBean> beans, LayoutHelper gridLayoutHelper, Context context) {
+        this.beans = beans;
         this.gridLayoutHelper = gridLayoutHelper;
         this.context = context;
     }
@@ -44,30 +49,22 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+        List<Homebean.DataBean.ChannelBean> channel = beans.get(position).getChannel();
         GridViewHolder viewHolder = ( GridViewHolder) holder;
 
-        if(position==0){
-            viewHolder.textView.setImageResource(R.drawable.a);
-            viewHolder.text.setText("居家");
-        }else if(position==1){
-            viewHolder.textView.setImageResource(R.drawable.ab);
-            viewHolder.text.setText("餐厅");
-        }else if(position==2){
-            viewHolder.textView.setImageResource(R.drawable.ad);
-            viewHolder.text.setText("配件");
-        }else if(position==3){
-            viewHolder.textView.setImageResource(R.drawable.ac);
-            viewHolder.text.setText("服装");
-        }else if(position==4) {
-            viewHolder.textView.setImageResource(R.drawable.ae);
-            viewHolder.text.setText("志趣");
-        }
+        Glide.with(context).load(channel.get(position).getIcon_url()).into(viewHolder.textView);
+        viewHolder.text.setText(channel.get(position).getName());
+
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        if (beans.size()>0){
+            return beans.size();
+        }else {
+            return 0;
+        }
+
     }
 
     class GridViewHolder extends RecyclerView.ViewHolder{

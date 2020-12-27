@@ -14,20 +14,8 @@
         android:textSize="12sp"
         android:layout_marginRight="10dp"
         android:layout_height="40dp"/>
-    <androidx.cardview.widget.CardView
-        app:cardCornerRadius="15dp"
-        app:cardUseCompatPadding="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.youth.banner.Banner
-            android:id="@+id/ban"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"/>
-    </androidx.cardview.widget.CardView>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recy_dh"
         android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:layout_height="match_parent"/>
 </LinearLayout>
