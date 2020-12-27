@@ -25,10 +25,10 @@ import java.util.List;
 
 public class MainLinearAdapter extends DelegateAdapter.Adapter {
     ArrayList<Homebean.DataBean> beans;
-    LinearLayoutHelper linearLayoutHelper;
+    LayoutHelper linearLayoutHelper;
     Context context;
 
-    public MainLinearAdapter(ArrayList<Homebean.DataBean> beans, LinearLayoutHelper linearLayoutHelper, Context context) {
+    public MainLinearAdapter(ArrayList<Homebean.DataBean> beans, LayoutHelper linearLayoutHelper, Context context) {
         this.beans = beans;
         this.linearLayoutHelper = linearLayoutHelper;
         this.context = context;

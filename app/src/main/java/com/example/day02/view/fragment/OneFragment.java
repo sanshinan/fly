@@ -26,7 +26,9 @@ import com.example.day02.view.adapter.MainGrAdapter;
 import com.example.day02.view.adapter.MainGridAdapter;
 import com.example.day02.view.adapter.MainGrmoneAdapter;
 import com.example.day02.view.adapter.MainLinearAdapter;
+import com.example.day02.view.adapter.MainRenQiAdapter;
 import com.example.day02.view.adapter.MainSingAdapter;
+import com.example.day02.view.adapter.MainTopAdapter;
 import com.example.mvp.net.INetCallBack;
 import com.example.mvp.net.RetrofitUtils;
 import com.youth.banner.Banner;
@@ -46,10 +48,19 @@ public class OneFragment extends Fragment {
     private ArrayList<Homebean.DataBean.BrandListBean> brandListBeans;
     private ArrayList<Homebean.DataBean.NewGoodsListBean> newGoodsListBeans;
     private ArrayList<Homebean.DataBean.HotGoodsListBean> hotGoodsListBeans;
+    private ArrayList<Homebean.DataBean.TopicListBean> topicListBeans;
     private RecyclerView recydh;
     private Homebean homebeans;
     private MainLinearAdapter mainLinearAdapter;
     private MainGridAdapter mainGridAdapter;
+    private MainSingAdapter mainSingAdapter;
+    private MainGrAdapter mainGrAdapter;
+    private MainSingAdapter singAdapter;
+    private MainGrmoneAdapter mainGrmoneAdapter;
+    private MainSingAdapter singaAdapter;
+    private MainRenQiAdapter mainRenQiAdapter;
+    private MainSingAdapter singabAdapter;
+    private MainTopAdapter mainTopAdapter;
 
     @Nullable
     @Override
@@ -74,14 +85,12 @@ public class OneFragment extends Fragment {
         brandListBeans=new ArrayList<>();
         newGoodsListBeans=new ArrayList<>();
         hotGoodsListBeans=new ArrayList<>();
+        topicListBeans=new ArrayList<>();
         //vlayout
         recydh=inflate.findViewById(R.id.recy_dh);
         //初始化布局管理器
         VirtualLayoutManager virtualLayoutManager = new VirtualLayoutManager(getContext());
-        RecyclerView.RecycledViewPool pool = new RecyclerView.RecycledViewPool();
-
-        recydh.setRecycledViewPool(pool);
-        pool.setMaxRecycledViews(0,10);
+        recydh.setLayoutManager(virtualLayoutManager);
         //线性布局使用 Banner
         LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
 
@@ -92,6 +101,7 @@ public class OneFragment extends Fragment {
          */
 
         ColumnLayoutHelper columnLayoutHelper = new ColumnLayoutHelper();
+
         columnLayoutHelper.setMargin(10,10,10,10);
         mainGridAdapter = new MainGridAdapter(channelBeans,columnLayoutHelper,getContext());
 
@@ -101,19 +111,20 @@ public class OneFragment extends Fragment {
         singleLayoutHelper.setAspectRatio(6);
         singleLayoutHelper.setMarginTop(6);
         String name="品牌制造商提供";
-        MainSingAdapter mainSingAdapter = new MainSingAdapter(getContext(), singleLayoutHelper, beans,name);
+        mainSingAdapter = new MainSingAdapter(getContext(), singleLayoutHelper, beans,name);
 
         //四张图片grid
         GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
+        gridLayoutHelper.setSpanCount(2);
         gridLayoutHelper.setAutoExpand(true);
-        MainGrAdapter mainGrAdapter = new MainGrAdapter(getContext(), gridLayoutHelper,brandListBeans);
+       mainGrAdapter = new MainGrAdapter(getContext(), gridLayoutHelper,brandListBeans);
         //周一周四
         SingleLayoutHelper sing = new SingleLayoutHelper();
         singleLayoutHelper.setItemCount(1);
         singleLayoutHelper.setAspectRatio(6);
         singleLayoutHelper.setMarginTop(6);
         String namea="周一周四：新品首发";
-        MainSingAdapter singAdapter = new MainSingAdapter(getContext(), singleLayoutHelper, beans,namea);
+        singAdapter = new MainSingAdapter(getContext(), singleLayoutHelper, beans,namea);
 
         //周一周四新品首发图片
         GridLayoutHelper gridLayoutHelper1 = new GridLayoutHelper(2);
@@ -121,18 +132,28 @@ public class OneFragment extends Fragment {
         gridLayoutHelper1.setVGap(10);
         gridLayoutHelper1.setHGap(10);
         gridLayoutHelper1.setAspectRatio(2);
-        MainGrmoneAdapter mainGrmoneAdapter = new MainGrmoneAdapter(getContext(), newGoodsListBeans, gridLayoutHelper1);
+        mainGrmoneAdapter = new MainGrmoneAdapter(getContext(), newGoodsListBeans, gridLayoutHelper1);
         //人气推荐
         SingleLayoutHelper singa = new SingleLayoutHelper();
         singleLayoutHelper.setItemCount(1);
-        singleLayoutHelper.setAspectRatio(6);
         singleLayoutHelper.setMarginTop(6);
         String nameaa="人气推荐";
-        MainSingAdapter singaAdapter = new MainSingAdapter(getContext(), singleLayoutHelper, beans,nameaa);
+        singaAdapter = new MainSingAdapter(getContext(), singleLayoutHelper, beans,nameaa);
         //人气推荐图片
-
-
-
+        LinearLayoutHelper linear = new LinearLayoutHelper();
+        linear.setItemCount(3);
+        mainRenQiAdapter = new MainRenQiAdapter(getContext(), linear, hotGoodsListBeans);
+        //专题精选
+        SingleLayoutHelper singab = new SingleLayoutHelper();
+        singleLayoutHelper.setItemCount(1);
+        singleLayoutHelper.setAspectRatio(6);
+        singleLayoutHelper.setMarginTop(6);
+        String nameaab="专题精选";
+        singabAdapter = new MainSingAdapter(getContext(), singleLayoutHelper, beans,nameaab);
+        //专题精选图片
+        LinearLayoutHelper helper = new LinearLayoutHelper();
+        helper.setItemCount(1);
+        mainTopAdapter = new MainTopAdapter(getContext(), helper, topicListBeans);
 
         DelegateAdapter adapter = new DelegateAdapter(virtualLayoutManager,true);
         adapter.addAdapter(mainLinearAdapter);//banner
@@ -141,7 +162,11 @@ public class OneFragment extends Fragment {
         adapter.addAdapter(mainGrAdapter);//第四行
         adapter.addAdapter(singAdapter);//第五行
         adapter.addAdapter(mainGrmoneAdapter);//第6行
-        adapter.addAdapter(singaAdapter);
+        adapter.addAdapter(singaAdapter);//第7行
+        adapter.addAdapter(mainRenQiAdapter);
+        adapter.addAdapter(mainRenQiAdapter);//第8行 //没显示出来
+        adapter.addAdapter(singabAdapter);//第9行
+        adapter.addAdapter(mainTopAdapter);
         recydh.setLayoutManager(virtualLayoutManager);
         recydh.setAdapter(adapter);
 
@@ -153,7 +178,10 @@ public class OneFragment extends Fragment {
             brandListBeans.addAll(bean.get(0).getBrandList());
             newGoodsListBeans.addAll(bean.get(0).getNewGoodsList());
             hotGoodsListBeans.addAll(bean.get(0).getHotGoodsList());
+            topicListBeans.addAll(bean.get(0).getTopicList());
             mainLinearAdapter.notifyDataSetChanged();
+            singaAdapter.notifyDataSetChanged();
+            mainRenQiAdapter.notifyDataSetChanged();
         }
     }
 }

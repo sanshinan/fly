@@ -4,15 +4,13 @@
     android:gravity="center"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/grid_my_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        tools:ignore="MissingConstraints" />
+         />
     <TextView
         android:id="@+id/titlea"
         android:layout_width="wrap_content"

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
+import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.day02.R;
 import com.example.day02.modle.bean.Homebean;
@@ -22,10 +23,10 @@ import java.util.List;
 public class MainGrAdapter extends DelegateAdapter.Adapter {
 
     Context context;
-    LayoutHelper layoutHelper;
+    GridLayoutHelper layoutHelper;
     private ArrayList<Homebean.DataBean.BrandListBean> brandListBeans;
 
-    public MainGrAdapter(Context context, LayoutHelper layoutHelper, ArrayList<Homebean.DataBean.BrandListBean> brandListBeans) {
+    public MainGrAdapter(Context context, GridLayoutHelper layoutHelper, ArrayList<Homebean.DataBean.BrandListBean> brandListBeans) {
         this.context = context;
         this.layoutHelper = layoutHelper;
         this.brandListBeans = brandListBeans;
