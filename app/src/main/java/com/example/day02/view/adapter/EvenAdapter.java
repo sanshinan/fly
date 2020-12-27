@@ -34,11 +34,11 @@ public class EvenAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        VB vhReEv= (VB) holder;
+        VB vb= (VB) holder;
         Homebean.DataBean.CategoryListBean.GoodsListBean goodsListBean = goodsList.get(position);
-        vhReEv.tta.setText(goodsListBean.getName());
-        vhReEv.ttb.setText("￥"+goodsListBean.getRetail_price());
-        Glide.with(context).load(goodsListBean.getList_pic_url()).into(vhReEv.img);
+        vb.tta.setText(goodsListBean.getName());
+        vb.ttb.setText("￥"+goodsListBean.getRetail_price());
+        Glide.with(context).load(goodsListBean.getList_pic_url()).into(vb.img);
     }
 
     @Override

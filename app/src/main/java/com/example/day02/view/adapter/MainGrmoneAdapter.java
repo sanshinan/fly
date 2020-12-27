@@ -45,7 +45,7 @@ public class MainGrmoneAdapter extends DelegateAdapter.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         VHY vhy= (VHY) holder;
         vhy.texta.setText(newGoodsListBeans.get(position).getName());
-        vhy.textb.setText("钱"+newGoodsListBeans.get(position).getRetail_price());
+        vhy.textb.setText("￥ "+newGoodsListBeans.get(position).getRetail_price());
         Glide.with(context).load(newGoodsListBeans.get(position).getList_pic_url()).into(vhy.img);
     }
 

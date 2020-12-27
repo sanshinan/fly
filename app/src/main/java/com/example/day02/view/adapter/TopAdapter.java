@@ -29,7 +29,7 @@ public class TopAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(context).inflate(R.layout.item_top_even, parent, false);
-        return null;
+        return new VH(inflate);
     }
 
     @Override

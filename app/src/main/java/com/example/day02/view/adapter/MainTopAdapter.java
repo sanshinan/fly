@@ -52,7 +52,7 @@ public class MainTopAdapter extends DelegateAdapter.Adapter {
     @Override
     public int getItemCount() {
         if (topicListBeans.size()>0){
-            return topicListBeans.size();
+            return 1;
         }else {
             return 0;
         }

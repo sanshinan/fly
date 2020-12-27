@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,10 +45,11 @@ public class MainRenQiAdapter extends DelegateAdapter.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         VHI vhi= (VHI) holder;
-        vhi.ta.setText(hotGoodsListBeans.get(position).getName());
-        vhi.tb.setText(hotGoodsListBeans.get(position).getGoods_brief());
-        vhi.tc.setText("钱"+hotGoodsListBeans.get(position).getRetail_price());
-        Glide.with(context).load(hotGoodsListBeans.get(position).getList_pic_url()).into(vhi.img);
+        Homebean.DataBean.HotGoodsListBean listBean = hotGoodsListBeans.get(position);
+        vhi.name.setText(listBean.getName());
+        vhi.jies.setText(listBean.getGoods_brief());
+        vhi.price.setText("￥ "+listBean.getRetail_price());
+        Glide.with(context).load(listBean.getList_pic_url()).into(vhi.img);
     }
 
     @Override
@@ -60,15 +62,15 @@ public class MainRenQiAdapter extends DelegateAdapter.Adapter {
     }
     class VHI extends RecyclerView.ViewHolder{
         ImageView img;
-        TextView ta;
-        TextView tb;
-        TextView tc;
+        TextView name;
+        TextView jies;
+        TextView price;
         public VHI(@NonNull View itemView) {
             super(itemView);
-            img=itemView.findViewById(R.id.products_img);
-            ta=itemView.findViewById(R.id.popularity_name);
-            tb=itemView.findViewById(R.id.popularity_jies);
-            tc=itemView.findViewById(R.id.products_price);
+            img=itemView.findViewById(R.id.popularity_img);
+            name=itemView.findViewById(R.id.popularity_name);
+            jies=itemView.findViewById(R.id.popularity_jies);
+            price=itemView.findViewById(R.id.popularity_price);
 
         }
     }

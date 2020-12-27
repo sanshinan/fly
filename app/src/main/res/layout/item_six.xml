@@ -32,7 +32,7 @@
             android:textSize="16sp"
             android:layout_below="@+id/popularity_jies"
             android:text="￥"
-            android:textColor="#FF0026"
+            android:textColor="#04F31B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

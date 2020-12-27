@@ -1,6 +1,7 @@
 package com.example.day02.view.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class MainJuAdapter extends DelegateAdapter.Adapter {
         this.context = context;
         this.categoryListBeans = categoryListBeans;
         this.layoutHelper = layoutHelper;
+
     }
 
     @Override
@@ -39,20 +41,22 @@ public class MainJuAdapter extends DelegateAdapter.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(context).inflate(R.layout.item_jujia, parent, false);
-        return new VH(inflate);
+        return new VHt(inflate);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        VH vh= (VH) holder;
+        VHt vh= (VHt) holder;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
         vh.re.setLayoutManager(gridLayoutManager);
         Homebean.DataBean.CategoryListBean categoryListBean = categoryListBeans.get(position);
         List<Homebean.DataBean.CategoryListBean.GoodsListBean> goodsList = categoryListBean.getGoodsList();
         vh.name.setText(categoryListBean.getName());
         ArrayList<Homebean.DataBean.CategoryListBean.GoodsListBean> listBeans = new ArrayList<>();
-        if (listBeans.size()>0){
+        if (goodsList.size()>0){
             listBeans.addAll(goodsList);
+
             EvenAdapter evenAdapter = new EvenAdapter(listBeans, context);
             vh.re.setAdapter(evenAdapter);
         }
@@ -66,10 +70,13 @@ public class MainJuAdapter extends DelegateAdapter.Adapter {
             return 0;
         }
     }
-    class VH extends RecyclerView.ViewHolder{
+
+
+    class VHt extends RecyclerView.ViewHolder{
         RecyclerView re;
         TextView name;
-        public VH(@NonNull View itemView) {
+
+        public VHt(@NonNull View itemView) {
             super(itemView);
             re=itemView.findViewById(R.id.envent_rec);
             name=itemView.findViewById(R.id.ev_item_name);

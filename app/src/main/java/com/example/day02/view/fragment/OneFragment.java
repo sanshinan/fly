@@ -63,6 +63,7 @@ public class OneFragment extends Fragment {
     private MainRenQiAdapter mainRenQiAdapter;
     private MainSingAdapter singabAdapter;
     private MainTopAdapter mainTopAdapter;
+    private MainJuAdapter mainJuAdapter;
 
     @Nullable
     @Override
@@ -92,8 +93,8 @@ public class OneFragment extends Fragment {
         //vlayout
         recydh=inflate.findViewById(R.id.recy_dh);
         //初始化布局管理器
-        VirtualLayoutManager virtualLayoutManager = new VirtualLayoutManager(getContext());
-        recydh.setLayoutManager(virtualLayoutManager);
+        VirtualLayoutManager virtualLayoutManager = new VirtualLayoutManager(getActivity());
+
         //线性布局使用 Banner
         LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
 
@@ -160,7 +161,7 @@ public class OneFragment extends Fragment {
         //复用
         LinearLayoutHelper layoutHelper = new LinearLayoutHelper();
 
-        MainJuAdapter mainJuAdapter = new MainJuAdapter(getContext(), categoryListBeans, layoutHelper);
+        mainJuAdapter = new MainJuAdapter(getContext(), categoryListBeans, layoutHelper);
 
 
         DelegateAdapter adapter = new DelegateAdapter(virtualLayoutManager,true);
@@ -171,7 +172,7 @@ public class OneFragment extends Fragment {
         adapter.addAdapter(singAdapter);//第五行
         adapter.addAdapter(mainGrmoneAdapter);//第6行
         adapter.addAdapter(singaAdapter);//第7行
-        adapter.addAdapter(mainRenQiAdapter);
+
         adapter.addAdapter(mainRenQiAdapter);//第8行 //没显示出来
         adapter.addAdapter(singabAdapter);//第9行
         adapter.addAdapter(mainTopAdapter);
@@ -183,15 +184,30 @@ public class OneFragment extends Fragment {
     public void getBean(List<Homebean.DataBean> bean){
         if (bean.size()>0){
             beans.addAll(bean);
-            channelBeans.addAll(bean.get(0).getChannel());
-            brandListBeans.addAll(bean.get(0).getBrandList());
-            newGoodsListBeans.addAll(bean.get(0).getNewGoodsList());
-            hotGoodsListBeans.addAll(bean.get(0).getHotGoodsList());
-            topicListBeans.addAll(bean.get(0).getTopicList());
-            categoryListBeans.addAll(bean.get(0).getCategoryList());
             mainLinearAdapter.notifyDataSetChanged();
+
+            channelBeans.addAll(bean.get(0).getChannel());
+            mainGridAdapter.notifyDataSetChanged();
+            mainSingAdapter.notifyDataSetChanged();
+
+            brandListBeans.addAll(bean.get(0).getBrandList());
+            mainGrAdapter.notifyDataSetChanged();
+            singAdapter.notifyDataSetChanged();
+
+            newGoodsListBeans.addAll(bean.get(0).getNewGoodsList());
+            mainGrmoneAdapter.notifyDataSetChanged();
             singaAdapter.notifyDataSetChanged();
+
+            hotGoodsListBeans.addAll(bean.get(0).getHotGoodsList());
             mainRenQiAdapter.notifyDataSetChanged();
+            singabAdapter.notifyDataSetChanged();
+
+            topicListBeans.addAll(bean.get(0).getTopicList());
+            mainTopAdapter.notifyDataSetChanged();
+
+
+            categoryListBeans.addAll(bean.get(0).getCategoryList());
+            mainJuAdapter.notifyDataSetChanged();
         }
     }
 }

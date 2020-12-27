@@ -25,19 +25,20 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
 
 
     private ArrayList<Homebean.DataBean.ChannelBean> channelBeans;
-    private LayoutHelper gridLayoutHelper;
+    private LayoutHelper layoutHelper;
 
     private Context context;
 
     public MainGridAdapter(ArrayList<Homebean.DataBean.ChannelBean> channelBeans, LayoutHelper gridLayoutHelper, Context context) {
         this.channelBeans = channelBeans;
-        this.gridLayoutHelper = gridLayoutHelper;
+        this.layoutHelper = gridLayoutHelper;
         this.context = context;
+
     }
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
-        return gridLayoutHelper;
+        return layoutHelper;
     }
 
     @NonNull
@@ -49,11 +50,9 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
         GridViewHolder viewHolder = ( GridViewHolder) holder;
-
-        Glide.with(context).load(channelBeans.get(position).getIcon_url()).into(viewHolder.textView);
         viewHolder.text.setText(channelBeans.get(position).getName());
+        Glide.with(context).load(channelBeans.get(position).getIcon_url()).into(viewHolder.textView);
 
     }
 
@@ -64,12 +63,12 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
         }else {
             return 0;
         }
-
     }
 
+
     class GridViewHolder extends RecyclerView.ViewHolder{
-        private TextView text;
-        private ImageView textView;
+        TextView text;
+        ImageView textView;
         public GridViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.grid_my_image);

@@ -27,7 +27,7 @@
         android:id="@+id/products_price"
         android:text="￥36"
         android:textSize="14sp"
-        android:textColor="#FDFF0015"
+        android:textColor="#FD00FFCC"
         android:layout_below="@+id/products_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
