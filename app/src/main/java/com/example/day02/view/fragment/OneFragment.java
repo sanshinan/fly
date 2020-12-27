@@ -25,6 +25,7 @@ import com.example.day02.modle.bean.Homebean;
 import com.example.day02.view.adapter.MainGrAdapter;
 import com.example.day02.view.adapter.MainGridAdapter;
 import com.example.day02.view.adapter.MainGrmoneAdapter;
+import com.example.day02.view.adapter.MainJuAdapter;
 import com.example.day02.view.adapter.MainLinearAdapter;
 import com.example.day02.view.adapter.MainRenQiAdapter;
 import com.example.day02.view.adapter.MainSingAdapter;
@@ -49,6 +50,7 @@ public class OneFragment extends Fragment {
     private ArrayList<Homebean.DataBean.NewGoodsListBean> newGoodsListBeans;
     private ArrayList<Homebean.DataBean.HotGoodsListBean> hotGoodsListBeans;
     private ArrayList<Homebean.DataBean.TopicListBean> topicListBeans;
+    private ArrayList<Homebean.DataBean.CategoryListBean> categoryListBeans;
     private RecyclerView recydh;
     private Homebean homebeans;
     private MainLinearAdapter mainLinearAdapter;
@@ -86,6 +88,7 @@ public class OneFragment extends Fragment {
         newGoodsListBeans=new ArrayList<>();
         hotGoodsListBeans=new ArrayList<>();
         topicListBeans=new ArrayList<>();
+        categoryListBeans=new ArrayList<>();
         //vlayout
         recydh=inflate.findViewById(R.id.recy_dh);
         //初始化布局管理器
@@ -154,6 +157,11 @@ public class OneFragment extends Fragment {
         LinearLayoutHelper helper = new LinearLayoutHelper();
         helper.setItemCount(1);
         mainTopAdapter = new MainTopAdapter(getContext(), helper, topicListBeans);
+        //复用
+        LinearLayoutHelper layoutHelper = new LinearLayoutHelper();
+
+        MainJuAdapter mainJuAdapter = new MainJuAdapter(getContext(), categoryListBeans, layoutHelper);
+
 
         DelegateAdapter adapter = new DelegateAdapter(virtualLayoutManager,true);
         adapter.addAdapter(mainLinearAdapter);//banner
@@ -167,6 +175,7 @@ public class OneFragment extends Fragment {
         adapter.addAdapter(mainRenQiAdapter);//第8行 //没显示出来
         adapter.addAdapter(singabAdapter);//第9行
         adapter.addAdapter(mainTopAdapter);
+        adapter.addAdapter(mainJuAdapter);
         recydh.setLayoutManager(virtualLayoutManager);
         recydh.setAdapter(adapter);
 
@@ -179,6 +188,7 @@ public class OneFragment extends Fragment {
             newGoodsListBeans.addAll(bean.get(0).getNewGoodsList());
             hotGoodsListBeans.addAll(bean.get(0).getHotGoodsList());
             topicListBeans.addAll(bean.get(0).getTopicList());
+            categoryListBeans.addAll(bean.get(0).getCategoryList());
             mainLinearAdapter.notifyDataSetChanged();
             singaAdapter.notifyDataSetChanged();
             mainRenQiAdapter.notifyDataSetChanged();
