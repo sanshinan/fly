@@ -22,6 +22,7 @@ import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.day02.R;
 import com.example.day02.modle.bean.Homebean;
+import com.example.day02.view.adapter.MainEdtextAdapter;
 import com.example.day02.view.adapter.MainGrAdapter;
 import com.example.day02.view.adapter.MainGridAdapter;
 import com.example.day02.view.adapter.MainGrmoneAdapter;
@@ -64,6 +65,7 @@ public class OneFragment extends Fragment {
     private MainSingAdapter singabAdapter;
     private MainTopAdapter mainTopAdapter;
     private MainJuAdapter mainJuAdapter;
+    private MainEdtextAdapter mainEdtextAdapter;
 
     @Nullable
     @Override
@@ -94,7 +96,9 @@ public class OneFragment extends Fragment {
         recydh=inflate.findViewById(R.id.recy_dh);
         //初始化布局管理器
         VirtualLayoutManager virtualLayoutManager = new VirtualLayoutManager(getActivity());
-
+        //线性布局
+        LinearLayoutHelper linearLayou = new LinearLayoutHelper();
+        mainEdtextAdapter = new MainEdtextAdapter(getContext(), linearLayou, beans);
         //线性布局使用 Banner
         LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
 
@@ -157,14 +161,15 @@ public class OneFragment extends Fragment {
         //专题精选图片
         LinearLayoutHelper helper = new LinearLayoutHelper();
         helper.setItemCount(1);
-        mainTopAdapter = new MainTopAdapter(getContext(), helper, topicListBeans);
+        mainTopAdapter = new MainTopAdapter (getContext(), helper, topicListBeans);
         //复用
         LinearLayoutHelper layoutHelper = new LinearLayoutHelper();
 
         mainJuAdapter = new MainJuAdapter(getContext(), categoryListBeans, layoutHelper);
 
 
-        DelegateAdapter adapter = new DelegateAdapter(virtualLayoutManager,true);
+        DelegateAdapter adapter = new DelegateAdapter(virtualLayoutManager,false);
+        adapter.addAdapter(mainEdtextAdapter);
         adapter.addAdapter(mainLinearAdapter);//banner
         adapter.addAdapter(mainGridAdapter);//网格
         adapter.addAdapter(mainSingAdapter);//第三行
@@ -184,6 +189,7 @@ public class OneFragment extends Fragment {
     public void getBean(List<Homebean.DataBean> bean){
         if (bean.size()>0){
             beans.addAll(bean);
+            mainEdtextAdapter.notifyDataSetChanged();
             mainLinearAdapter.notifyDataSetChanged();
 
             channelBeans.addAll(bean.get(0).getChannel());

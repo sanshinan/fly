@@ -36,4 +36,14 @@ public class MainModelImpl implements MainContract.IMainModel {
     public <T> void getHome(String url, INetCallBack<T> callBack) {
         RetrofitUtils.getInstance().get(url,callBack);
     }
+
+    @Override
+    public <T> void getSpecia(String url, INetCallBack<T> callBack) {
+        RetrofitUtils.getInstance().get(url,callBack);
+    }
+
+    @Override
+    public <T> void getablayout(String url, INetCallBack<T> callBack) {
+        RetrofitUtils.getInstance().get(url,callBack);
+    }
 }

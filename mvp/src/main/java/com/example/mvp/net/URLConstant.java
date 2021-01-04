@@ -14,4 +14,8 @@ public class URLConstant {
 
 
     public static String JIAJU_Z=JIAJU_SHOUYE+"api/index";
+
+    public static String ZHUANTI="https://cdplay.cn/api/topic/list?page=1&size=10";
+
+    public static String TAB="https://cdplay.cn/api/catalog/index?id=1005000";
 }

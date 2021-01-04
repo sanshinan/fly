@@ -5,6 +5,8 @@ package com.example.day02.contract;
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
 import com.example.day02.modle.bean.Homebean;
+import com.example.day02.modle.bean.Specialbean;
+import com.example.day02.modle.bean.Tabbean;
 import com.example.day02.modle.bean.UserBean;
 
 import com.example.mvp.base.BaseModle;
@@ -21,6 +23,11 @@ public class MainContract {
         <T> void getLoginCh(String url, INetCallBack<T> callBack);
         //购物首页业务
         <T> void getHome(String url, INetCallBack<T> callBack);
+        //购物专题
+        //购物首页业务
+        <T> void getSpecia(String url, INetCallBack<T> callBack);
+        //竖着tab
+        <T> void getablayout(String url,INetCallBack<T> callBack);
 
     }
     public  interface IMainPresenter {
@@ -32,6 +39,10 @@ public class MainContract {
         void loginCh(String url);
         //购物首页业务
         void homepage(String url);
+        //购物专题
+        void Spercia(String url);
+        //购物竖tablayout
+        void Tab(String url);
     }
     public interface IMainView extends BaseView {
 
@@ -42,5 +53,9 @@ public class MainContract {
         void getCh(Chbean chbean);
         //购物首页业务
         void gethome(Homebean homebean);
+        //购物专题
+        void getSpercia(Specialbean specialbean);
+        //购物竖着tab
+        void gettab(Tabbean tabbean);
     }
 }

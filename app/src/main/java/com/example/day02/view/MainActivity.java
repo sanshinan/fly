@@ -35,6 +35,8 @@ import com.example.day02.contract.MainContract;
 import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
 import com.example.day02.modle.bean.Homebean;
+import com.example.day02.modle.bean.Specialbean;
+import com.example.day02.modle.bean.Tabbean;
 import com.example.day02.modle.bean.UserBean;
 import com.example.day02.persent.MainPresenterImpl;
 import com.example.day02.util.PoiOverlay;
@@ -215,6 +217,16 @@ public class MainActivity extends BaseActivity<MainPresenterImpl> implements Mai
 
     @Override
     public void gethome(Homebean homebean) {
+
+    }
+
+    @Override
+    public void getSpercia(Specialbean specialbean) {
+
+    }
+
+    @Override
+    public void gettab(Tabbean tabbean) {
 
     }
 

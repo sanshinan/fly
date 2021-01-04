@@ -7,6 +7,8 @@ import com.example.day02.modle.bean.Banbean;
 import com.example.day02.modle.bean.Chbean;
 import com.example.day02.modle.MainModelImpl;
 import com.example.day02.modle.bean.Homebean;
+import com.example.day02.modle.bean.Specialbean;
+import com.example.day02.modle.bean.Tabbean;
 import com.example.day02.modle.bean.UserBean;
 import com.example.mvp.base.BasePresenter;
 import com.example.mvp.net.INetCallBack;
@@ -68,6 +70,38 @@ public class MainPresenterImpl extends BasePresenter<MainContract.IMainView,Main
             @Override
             public void onSuccess(Homebean homebean) {
                 iView.gethome(homebean);
+            }
+
+            @Override
+            public void onFail(String err) {
+
+            }
+        });
+    }
+    //p层购物专题
+    @Override
+    public void Spercia(String url) {
+        iModle.getSpecia(url, new INetCallBack<Specialbean>() {
+
+            @Override
+            public void onSuccess(Specialbean specialbean) {
+                iView.getSpercia(specialbean);
+            }
+
+            @Override
+            public void onFail(String err) {
+
+            }
+        });
+    }
+
+    @Override
+    public void Tab(String url) {
+        iModle.getablayout(url, new INetCallBack<Tabbean>() {
+
+            @Override
+            public void onSuccess(Tabbean tabbean) {
+                iView.gettab(tabbean);
             }
 
             @Override
